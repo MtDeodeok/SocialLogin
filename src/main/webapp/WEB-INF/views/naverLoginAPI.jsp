@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="java.net.URLEncoder"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder"%>
 <%@ page import="java.net.URL"%>
 <%@ page import="java.net.HttpURLConnection"%>
 <%@ page import="java.io.BufferedReader"%>
@@ -17,7 +17,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<%
+	<%
 	String clientId = "RfGcCZnltonIYA14PB0U";//애플리케이션 클라이언트 아이디값";
 	String clientSecret = "C6wjkh1DR8";//애플리케이션 클라이언트 시크릿값";
 	String code = request.getParameter("code");
@@ -32,7 +32,6 @@
 	apiURL += "&state=" + state;
 	String access_token = "";
 	String refresh_token = "";
-	System.out.println("apiURL=" + apiURL);
 	String jsondata = "";
 	try {
 		URL url = new URL(apiURL);
@@ -40,7 +39,6 @@
 		con.setRequestMethod("GET");
 		int responseCode = con.getResponseCode();
 		BufferedReader br;
-		System.out.print("responseCode=" + responseCode);
 		if (responseCode == 200) { // 정상 호출
 			br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		} else { // 에러 발생
@@ -53,7 +51,6 @@
 		}
 		br.close();
 		if (responseCode == 200) {
-			out.println(res.toString());
 
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(res.toString());
@@ -68,21 +65,41 @@
 		System.out.println(e);
 	}
 	%>
+	
 	<script type="text/javascript">
-		var data = <%=jsondata%>;
+		const data = <%=jsondata%>;
+		
 		
 		$(document).ready(function() {
 			$.ajax({
-				url : "naverLogin",
+				url : "naverLoginAPI",
 				data : JSON.stringify(data),
 				type : "POST",
 				dataType : "json",
 				contentType : "application/json; charset=utf-8",
 				success : function(data) {
-					console.log(data);
+					console.log("성공");
+					return location.href="/loginNaver";
+				},
+				error: function(){
+					console.log("실패");
 				}
 			});
 		});
 	</script>
+	<%-- <form id="loginNaver" action="naverLogin" method="post">
+		<input type="text" id="naverName" name="name" style="display: none">
+		<input type="text" id="naverEmail" name="email" style="display: none">
+	</form>
+	<script type="text/javascript">
+		var data = <%=jsondata%>;
+	
+		const email = data.response.email;
+		const name = data.response.name;
+	
+		$('input[id=googleName]').val(email);
+		$('input[id=googleEmail]').val(name);
+		$('#loginGoogle').submit();
+	</script> --%>
 </body>
 </html>

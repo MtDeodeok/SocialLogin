@@ -8,8 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id"
-	content="533964162845-j21mqvso997dfk3hs4e558dfo3q23m0m.apps.googleusercontent.com">
+<meta name="google-signin-client_id" content="533964162845-j21mqvso997dfk3hs4e558dfo3q23m0m.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <title>로그인</title>
