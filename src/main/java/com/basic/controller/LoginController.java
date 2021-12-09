@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.basic.service.LoginService;
+import com.basic.vo.LoginVO;
 
 @Controller
 public class LoginController {
@@ -25,20 +26,47 @@ public class LoginController {
 		return "/login";
 	}
 
-	@RequestMapping(value = "loginNaver", method = RequestMethod.GET)
-	public String loginPOSTNaver(HttpSession session) {
-
-		return "/loginNaver";
+	@GetMapping("/loginNaver")
+	public void loginNaver() {
+		
 	}
+	
+	@RequestMapping(value = "naverLoginAPI", method = RequestMethod.GET)
+	public String loginPOSTNaver(HttpSession session) {
+		
+		return "/naverLoginAPI";
+	}
+	
+	@RequestMapping(value="naverLogin", produces="application/json;charset=UTF-8", method=RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> naver(@RequestBody HashMap<String, Object> params) {
+		HashMap<String,Object> naverProfile = (HashMap<String, Object>) params.get("response");
+		System.out.println(naverProfile.get("email"));
+		System.out.println(naverProfile.get("name"));
 
-	@RequestMapping(value="test", produces="application/json;charset=UTF-8", method=RequestMethod.POST)
-	public @ResponseBody HashMap<String, Object> test(@RequestBody HashMap<String, Object> params) {
-		System.out.println();
-		HashMap<String,Object> test = (HashMap<String, Object>) params.get("response");
-		System.out.println(test.get("email"));
-		System.out.println(test.get("mobile"));
-		System.out.println(test.get("name"));
 		return params;
 	}
 	
+	@RequestMapping(value="googleLogin", method=RequestMethod.POST)
+	public String google(LoginVO loginVO) {
+		System.out.println(loginVO.getName());
+		System.out.println(loginVO.getEmail());
+		return "/loginGoogle";
+	}
+	
+	@GetMapping("/loginGoogle")
+	public void loginGoogle() {
+		
+	}
+	
+	@RequestMapping(value="kakaoLogin", method=RequestMethod.POST)
+	public String kakao(LoginVO loginVO) {
+		System.out.println(loginVO.getName());
+		System.out.println(loginVO.getEmail());
+		return "/loginKakao";
+	}
+	
+	@GetMapping("/loginKakao")
+	public void loginKakao() {
+		
+	}
 }
