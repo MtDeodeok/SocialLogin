@@ -64,11 +64,9 @@
 	} catch (Exception e) {
 		System.out.println(e);
 	}
-	%>
-	
+	%>	
 	<script type="text/javascript">
 		const data = <%=jsondata%>;
-		
 		
 		$(document).ready(function() {
 			$.ajax({
@@ -78,28 +76,15 @@
 				dataType : "json",
 				contentType : "application/json; charset=utf-8",
 				success : function(data) {
-					console.log("성공");
-					return location.href="/loginNaver";
+					
+					return location.href="loginNaver";
 				},
 				error: function(){
-					console.log("실패");
+					console.log("로그인 실패");
 				}
 			});
 		});
 	</script>
-	<%-- <form id="loginNaver" action="naverLogin" method="post">
-		<input type="text" id="naverName" name="name" style="display: none">
-		<input type="text" id="naverEmail" name="email" style="display: none">
-	</form>
-	<script type="text/javascript">
-		var data = <%=jsondata%>;
-	
-		const email = data.response.email;
-		const name = data.response.name;
-	
-		$('input[id=googleName]').val(email);
-		$('input[id=googleEmail]').val(name);
-		$('#loginGoogle').submit();
-	</script> --%>
+		
 </body>
 </html>

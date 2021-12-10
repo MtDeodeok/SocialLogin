@@ -9,22 +9,20 @@
 </head>
 <body>
 	네이버 로그인 완료
-	<a href="/login" onclick="naverLogout();">Sign out</a>
+	<div>
+		<a href="/myPage">MyPage</a> 
+	</div>
+	<div>
+	<a href="/logout" onclick="naverLogout()">Sign out</a>
+	</div>
+	
 	<script>
-		var testPopUp;
-		function openPopUp() {
-			testPopUp = window
-					.open("https://nid.naver.com/nidlogin.logout", "_blank",
-							"toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
-		}
-		function closePopUp() {
-			testPopUp.close();
-		}
-
-		function naverLogout() {
-			openPopUp();
-			closePopUp();
-		}
+	function naverLogout(){
+		window.open("http://nid.naver.com/nidlogin.logout","_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+		setTimeout(function() {  
+			window.close();
+		}, 1000);
+	}
 	</script>
 </body>
 </html>

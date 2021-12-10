@@ -9,7 +9,12 @@
 </head>
 <body>
 	카카오 로그인 완료
-	<a href="/login" onclick="kakaoLogout();">Sign out</a>
+	<div>
+		<a href="/myPage">MyPage</a> 
+	</div>
+	<div>
+		<a href="/logout" onclick="kakaoLogout();">Sign out</a>
+	</div>
 	<script>
 	function kakaoLogout() {
 	    if (Kakao.Auth.getAccessToken()) {
@@ -17,6 +22,7 @@
 	          url: '/v1/user/unlink',
 	          success: function (response) {
 	          	console.log(response)
+	          	return "/login"
 	          },
 	          fail: function (error) {
 	            console.log(error)

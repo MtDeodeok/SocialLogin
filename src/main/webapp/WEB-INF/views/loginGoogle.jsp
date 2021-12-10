@@ -10,7 +10,12 @@
 </head>
 <body>
 	구글 로그인 완료
-	<a href="/login" onclick="signOut();">Sign out</a>
+	<div>
+		<a href="/myPage">MyPage</a> 
+	</div>
+	<div>
+		<a href="/login" onclick="signOut();">Sign out</a>
+	</div>
 	<script>
 		function signOut() {
 			var auth2 = gapi.auth2.getAuthInstance();

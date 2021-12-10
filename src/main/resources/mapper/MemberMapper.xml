@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.basic.dao.MemberDAO">
+	<insert id="insertMember" parameterType="com.basic.vo.MemberVO">
+		insert into
+		member(email,name,provider,registDate,grade)
+		values(#{email},#{name},#{provider},#{registDate},0)
+	</insert>
+	
+	<select id="memberCheck" parameterType="com.basic.vo.MemberVO" resultType="int">
+		SELECT count(*) FROM member
+		WHERE email = #{email} and name = #{name} and provider = #{provider}
+	</select>
+	
+	<select id="myPage" parameterType="com.basic.vo.MemberVO" resultType="com.basic.vo.MemberVO">
+		SELECT email, name, provider, registDate FROM member
+		where email=#{email} and provider=#{provider}
+	</select>
+</mapper>
