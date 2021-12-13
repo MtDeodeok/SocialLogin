@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApiExamMemberProfile {
+public class NaverApiExamMemberProfile {
 
 	public static void main(String[] args) {
 		String token = "YOUR_ACCESS_TOKEN"; // 네이버 로그인 접근 토큰;

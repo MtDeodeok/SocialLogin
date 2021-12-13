@@ -11,5 +11,6 @@ public class MemberVO {
 	private String name;
 	private String provider;
 	private LocalDate registDate;
+	private String profile;
 	private int grade;
 }

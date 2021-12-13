@@ -6,17 +6,22 @@
 <mapper namespace="com.basic.dao.MemberDAO">
 	<insert id="insertMember" parameterType="com.basic.vo.MemberVO">
 		insert into
-		member(email,name,provider,registDate,grade)
-		values(#{email},#{name},#{provider},#{registDate},0)
+		member(email,name,provider,registDate,profile,grade,state)
+		values(#{email},#{name},#{provider},#{registDate},#{profile},0,0)
 	</insert>
+	
+	<update id="deleteMember" parameterType="com.basic.vo.MemberVO">
+		update member set state=1
+		WHERE email=#{email} and provider=#{provider}
+	</update>
 	
 	<select id="memberCheck" parameterType="com.basic.vo.MemberVO" resultType="int">
 		SELECT count(*) FROM member
-		WHERE email = #{email} and name = #{name} and provider = #{provider}
+		WHERE email = #{email} and name = #{name} and provider = #{provider} and state = 0
 	</select>
 	
 	<select id="myPage" parameterType="com.basic.vo.MemberVO" resultType="com.basic.vo.MemberVO">
-		SELECT email, name, provider, registDate FROM member
-		where email=#{email} and provider=#{provider}
+		SELECT email, name, provider, registDate, profile FROM member
+		where email=#{email} and provider=#{provider} and state = 0
 	</select>
 </mapper>

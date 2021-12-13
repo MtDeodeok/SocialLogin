@@ -34,5 +34,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberdao.myPage(membervo);
 	}
+
+	@Override
+	public void deleteMember(String email, String provider) {
+		memberdao.deleteMember(email, provider);
+	}
 	
 }
