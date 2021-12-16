@@ -19,10 +19,10 @@
 		<a href="/myPage">MyPage</a> 
 	</div>
 	<div>
-		<a href="/logout" onclick="kakaoLogout()">Sign out</a>
+		<a href="#" onclick="kakaoLogout()">Sign out</a>
 	</div>
-	<script>
-	
-	  </script>
+	<div>
+		<a href="#" onclick="kakaoOut()">탈퇴</a>
+	</div>
 </body>
 </html>

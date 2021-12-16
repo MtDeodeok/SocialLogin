@@ -9,11 +9,11 @@
 <meta charset="UTF-8">
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="533964162845-j21mqvso997dfk3hs4e558dfo3q23m0m.apps.googleusercontent.com">
+<script type="text/javascript" src="/js/googleLoginout.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript" src="/js/kakaoLoginout.js"></script>
-<script type="text/javascript" src="/js/googleLoginout.js"></script>
 <title>로그인</title>
 </head>
 <body>
@@ -35,7 +35,7 @@
 	<!-- 네이버로그인 끝 -->
 
 	<!-- 구글 로그인  -->
-	<div class="g-signin2" onclick="javascript:onSignIn()"></div>
+	<div class="g-signin2" onclick="onSignIn()"></div>
 		<form id="loginGoogle" action="googleLogin" method="post">
 			<input type="text" id="googleName" name="name" style="display: none">
 			<input type="text" id="googleEmail" name="email" style="display: none">

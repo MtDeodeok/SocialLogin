@@ -24,9 +24,10 @@ public class MemberController {
 	
 	private final MemberService memberservice;
 
-	@GetMapping("/")
-	public void index() {
-		
+	@RequestMapping(value = "/")
+	public String index() {
+
+		return "index";
 	}
 	
 	@GetMapping("/join")
@@ -111,9 +112,10 @@ public class MemberController {
 	@RequestMapping(value="googleLogin", method=RequestMethod.POST)
 	public String google(MemberVO membervo,HttpServletRequest request) {
 		
-//		 System.out.println(membervo); System.out.println(membervo.getName());
-//		 System.out.println(membervo.getEmail());
-//		 System.out.println(membervo.getProfile());
+		System.out.println(membervo);
+		System.out.println(membervo.getName());
+		System.out.println(membervo.getEmail());
+		System.out.println(membervo.getProfile());
 		 		
 		membervo.setProvider("google");
 		
